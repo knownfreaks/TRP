@@ -23,8 +23,14 @@ switch ($page) {
     case 'inventory':
         require __DIR__ . '/modules/inventory/index.php';
         break;
+    case 'orders':
+        require __DIR__ . '/modules/orders/index.php';
+        break;
     case 'customers':
         require __DIR__ . '/modules/customers/index.php';
+        break;
+    case 'finance':
+        require __DIR__ . '/modules/finance/index.php';
         break;
     default:
         require __DIR__ . '/views/dashboard.php';

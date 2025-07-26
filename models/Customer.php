@@ -13,6 +13,13 @@ class Customer
         return $stmt->fetchAll();
     }
 
+    public function find($id)
+    {
+        $stmt = $this->pdo->prepare('SELECT * FROM customers WHERE id=?');
+        $stmt->execute([$id]);
+        return $stmt->fetch();
+    }
+
     public function create($data)
     {
         $stmt = $this->pdo->prepare('INSERT INTO customers(name,email,phone,address) VALUES(?,?,?,?)');
@@ -21,6 +28,18 @@ class Customer
             $data['email'],
             $data['phone'],
             $data['address']
+        ]);
+    }
+
+    public function update($id, $data)
+    {
+        $stmt = $this->pdo->prepare('UPDATE customers SET name=?, email=?, phone=?, address=? WHERE id=?');
+        $stmt->execute([
+            $data['name'],
+            $data['email'],
+            $data['phone'],
+            $data['address'],
+            $id
         ]);
     }
 

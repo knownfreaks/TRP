@@ -27,3 +27,20 @@ CREATE TABLE IF NOT EXISTS customers (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE IF NOT EXISTS orders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_id INT NOT NULL,
+    order_date DATE,
+    status VARCHAR(50) DEFAULT 'Pending',
+    total DECIMAL(10,2) DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (customer_id) REFERENCES customers(id)
+);
+
+CREATE TABLE IF NOT EXISTS finance (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    description VARCHAR(255) NOT NULL,
+    amount DECIMAL(10,2) NOT NULL,
+    type ENUM('income','expense') DEFAULT 'income',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
