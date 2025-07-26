@@ -6,6 +6,9 @@ A lightweight modular ERP system for eCommerce built with PHP and MySQL. Designe
 1. Upload all files to your hosting space.
 2. Browse to `/install/` and provide your database credentials and admin account details.
 3. After successful installation, login at `/login.php` with the admin credentials you created.
+4. If you see a database connection error, open `config/config.php` and ensure your
+   database username and password are correct. You can also set the values
+   through environment variables `DB_HOST`, `DB_NAME`, `DB_USER`, and `DB_PASS`.
 
 ## Features
 - Web-based installer that creates the database and admin user.
