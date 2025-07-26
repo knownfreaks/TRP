@@ -10,6 +10,7 @@ A lightweight modular ERP system for eCommerce built with PHP and MySQL. Designe
    database username and password are correct. You can also set the values
    through environment variables `DB_HOST`, `DB_NAME`, `DB_USER`, and `DB_PASS`.
 
+
 ## Features
 - Web-based installer that creates the database and admin user.
 - Simple authentication with role-based sidebar.
