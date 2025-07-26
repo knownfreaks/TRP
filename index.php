@@ -39,4 +39,3 @@ switch ($page) {
 
 include __DIR__ . '/includes/close.php';
 include __DIR__ . '/includes/footer.php';
-

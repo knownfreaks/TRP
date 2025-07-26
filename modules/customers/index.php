@@ -11,7 +11,7 @@ if ($action === 'add' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 
-if ($action === 'edit' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($action === 'edit' && $_SERVER['REQUEST_METHOD'] === 'POST' && $id) {
     $customerModel->update($id, $_POST);
     header('Location: index.php?page=customers');
     exit;
@@ -50,7 +50,9 @@ $current = ($action === 'edit' && $id) ? $customerModel->find($id) : null;
 </form>
 <?php endif; ?>
 <table class="table table-bordered mt-3">
-    <thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th></th></tr></thead>
+    <thead>
+        <tr><th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th></th></tr>
+    </thead>
     <tbody>
     <?php foreach ($customers as $c): ?>
         <tr>

@@ -11,7 +11,7 @@ if ($action === 'add' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 
-if ($action === 'edit' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($action === 'edit' && $_SERVER['REQUEST_METHOD'] === 'POST' && $id) {
     $productModel->update($id, $_POST);
     header('Location: index.php?page=inventory');
     exit;
@@ -56,7 +56,9 @@ $current = ($action === 'edit' && $id) ? $productModel->find($id) : null;
 </form>
 <?php endif; ?>
 <table class="table table-bordered mt-3">
-    <thead><tr><th>ID</th><th>Title</th><th>SKU</th><th>Stock</th><th>Price</th><th></th></tr></thead>
+    <thead>
+        <tr><th>ID</th><th>Title</th><th>SKU</th><th>Stock</th><th>Price</th><th></th></tr>
+    </thead>
     <tbody>
     <?php foreach ($products as $p): ?>
         <tr>

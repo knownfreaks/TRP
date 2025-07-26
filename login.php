@@ -14,6 +14,7 @@ $error = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username'] ?? '');
     $password = trim($_POST['password'] ?? '');
+
     try {
         $stmt = $pdo->prepare('SELECT * FROM users WHERE username = ?');
         $stmt->execute([$username]);
