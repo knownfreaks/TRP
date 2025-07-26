@@ -9,7 +9,7 @@ $role = $_SESSION['user']['role'] ?? 'staff';
             <li class="nav-item"><a class="nav-link text-white" href="index.php?page=inventory">Inventory</a></li>
             <?php if ($role === 'admin' || $role === 'manager'): ?>
             <li class="nav-item"><a class="nav-link text-white" href="#">Orders</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="#">Customers</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="index.php?page=customers">Customers</a></li>
             <li class="nav-item"><a class="nav-link text-white" href="#">Finance</a></li>
             <?php endif; ?>
             <li class="nav-item mt-auto"><a class="nav-link text-white" href="logout.php">Logout</a></li>

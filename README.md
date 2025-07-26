@@ -11,6 +11,7 @@ A lightweight modular ERP system for eCommerce built with PHP and MySQL. Designe
 - Web-based installer that creates the database and admin user.
 - Simple authentication with role-based sidebar.
 - Inventory module with product CRUD operations.
+- Customers module with basic CRM records.
 - Dashboard with basic metrics.
 
 ## Default Structure
@@ -27,4 +28,8 @@ A lightweight modular ERP system for eCommerce built with PHP and MySQL. Designe
 ```
 
 This is a starting point for a larger ERP system.
+
+### Expanding for Real Business Use
+
+To turn this starter into a production-ready ERP, consider adding modules for orders, finance, HR, and reporting. Implement role-based permissions for granular control and secure all forms with CSRF tokens and validation. A minimalist Bootstrap 5 interface keeps pages fast and responsive while remaining easy to customize. Future enhancements can include a REST API layer, audit logging, and multi-language support to cater to different business types.
 
