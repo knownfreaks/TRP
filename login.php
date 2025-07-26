@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+if (!file_exists(__DIR__ . '/config/installed.lock')) {
+    header('Location: install/');
+    exit;
+}
+
 require_once __DIR__ . '/config/config.php';
 require_once __DIR__ . '/config/database.php';
 
@@ -8,19 +14,24 @@ $error = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username'] ?? '');
     $password = trim($_POST['password'] ?? '');
-    $stmt = $pdo->prepare('SELECT * FROM users WHERE username = ?');
-    $stmt->execute([$username]);
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    if ($user && password_verify($password, $user['password'])) {
-        $_SESSION['user'] = [
-            'id' => $user['id'],
-            'role' => $user['role'],
-            'username' => $user['username']
-        ];
-        header('Location: index.php');
-        exit;
-    } else {
-        $error = 'Invalid credentials';
+
+    try {
+        $stmt = $pdo->prepare('SELECT * FROM users WHERE username = ?');
+        $stmt->execute([$username]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($user && password_verify($password, $user['password'])) {
+            $_SESSION['user'] = [
+                'id' => $user['id'],
+                'role' => $user['role'],
+                'username' => $user['username']
+            ];
+            header('Location: index.php');
+            exit;
+        } else {
+            $error = 'Invalid credentials';
+        }
+    } catch (PDOException $e) {
+        $error = 'Database error. Please run the installer.';
     }
 }
 ?>

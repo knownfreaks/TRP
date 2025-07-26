@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+if (!file_exists(__DIR__ . '/config/installed.lock')) {
+    header('Location: install/');
+    exit;
+}
+
 require_once __DIR__ . '/config/config.php';
 require_once __DIR__ . '/config/database.php';
 
@@ -27,4 +33,3 @@ switch ($page) {
 
 include __DIR__ . '/includes/close.php';
 include __DIR__ . '/includes/footer.php';
-
