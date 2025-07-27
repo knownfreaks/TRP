@@ -27,7 +27,6 @@ CREATE TABLE IF NOT EXISTS customers (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-
 CREATE TABLE IF NOT EXISTS orders (
     id INT AUTO_INCREMENT PRIMARY KEY,
     customer_id INT NOT NULL,
@@ -45,4 +44,3 @@ CREATE TABLE IF NOT EXISTS finance (
     type ENUM('income','expense') DEFAULT 'income',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
